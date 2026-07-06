@@ -13,13 +13,13 @@
 <style>
 :root{
   --bg:#0a0908; --surface:#14110e; --line:rgba(201,162,75,.22);
-  --gold:#c9a24b; --gold-bright:#e0bd72; --rose:#d8a7b1; --rose-deep:#c48e9a;
+  --gold:#c9a24b; --gold-bright:#e0bd72; --rose:#d8a7b1;
   --text:#ede7df; --text-dim:#a89f93;
   --shadow:0 30px 80px rgba(0,0,0,.55);
 }
 [data-theme="light"]{
   --bg:#f8f0ea; --surface:#fdf8f4; --line:rgba(168,128,47,.25);
-  --gold:#a8802f; --gold-bright:#8d6a24; --rose:#b0716f; --rose-deep:#9c5f60;
+  --gold:#a8802f; --gold-bright:#8d6a24; --rose:#b0716f;
   --text:#241c16; --text-dim:#6e6259;
   --shadow:0 30px 80px rgba(120,90,60,.18);
 }
@@ -65,7 +65,7 @@ h2{font-size:clamp(2rem,4.5vw,3.1rem);line-height:1.15;margin-bottom:28px}
 h2 em{color:var(--rose);font-style:italic}
 
 .about-grid{display:grid;grid-template-columns:340px 1fr;gap:clamp(30px,5vw,70px);align-items:start}
-.portrait{aspect-ratio:4/5;border-radius:6px;border:1px solid var(--line);background:linear-gradient(160deg,var(--surface),color-mix(in srgb,var(--gold) 8%,var(--surface)));display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:var(--shadow);position:sticky;top:110px}
+.portrait{aspect-ratio:4/5;border-radius:6px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);position:sticky;top:110px;background:var(--surface)}
 .portrait img{width:100%;height:100%;object-fit:cover;display:block}
 .bio p{color:var(--text-dim);margin-bottom:1.3em;font-size:1.02rem}
 .bio p strong{color:var(--text);font-weight:500}
@@ -74,26 +74,36 @@ h2 em{color:var(--rose);font-style:italic}
 .sound-tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .tag{border:1px solid var(--line);border-radius:100px;padding:9px 22px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);transition:.3s}
 .tag:hover{border-color:var(--rose);color:var(--rose)}
-.lineage{margin-top:44px;color:var(--text-dim);font-size:.95rem}
-.lineage span{color:var(--gold)}
 
-.eras{position:relative;margin-top:20px}
-.eras::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--line),var(--gold),var(--line))}
-.era{position:relative;padding:0 0 70px 58px}
-.era:last-child{padding-bottom:0}
-.era::before{content:"";position:absolute;left:5px;top:10px;width:13px;height:13px;border-radius:50%;border:1px solid var(--gold);background:var(--bg)}
-.era.now::before{background:var(--gold);box-shadow:0 0 18px color-mix(in srgb,var(--gold) 60%,transparent)}
-.era-date{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--rose)}
-.era h3{font-size:1.9rem;margin:8px 0 10px}
-.era p{color:var(--text-dim);max-width:56ch;font-size:.98rem}
-.tracks{margin-top:22px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
-.track{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line);font-size:.92rem;transition:.25s}
-.track:last-child{border-bottom:none}
-.track:hover{background:color-mix(in srgb,var(--gold) 7%,var(--surface));padding-left:28px}
-.track .no{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;width:34px}
-.track .name{flex:1}
-.track a{color:var(--rose);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
-.coming{display:inline-block;margin-top:18px;border:1px solid var(--rose);color:var(--rose);border-radius:100px;padding:8px 22px;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase}
+/* ---- discography ---- */
+.era-head{margin:70px 0 34px;display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+.era-head:first-of-type{margin-top:10px}
+.era-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--rose)}
+.era-head a{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:3px;transition:.3s}
+.era-head a:hover{color:var(--rose);border-color:var(--rose)}
+
+.album-feature{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:clamp(24px,4vw,50px);align-items:start;margin-bottom:54px}
+.cover-lg{aspect-ratio:1;border-radius:8px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);display:block;transition:transform .4s}
+.cover-lg:hover{transform:translateY(-5px)}
+.cover-lg img{width:100%;height:100%;object-fit:cover;display:block}
+.album-meta .a-type{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--rose)}
+.album-meta h3{font-size:2rem;margin:6px 0 16px}
+.tracklist{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.tracklist a{display:flex;gap:16px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);font-size:.92rem;transition:.25s}
+.tracklist a:last-child{border-bottom:none}
+.tracklist a:hover{background:color-mix(in srgb,var(--gold) 7%,var(--surface));padding-left:26px;color:var(--rose)}
+.tracklist .no{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;width:26px}
+
+.cover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:22px}
+.cover-card{display:block;transition:transform .35s}
+.cover-card:hover{transform:translateY(-6px)}
+.cover-art{aspect-ratio:1;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,var(--surface),color-mix(in srgb,var(--gold) 10%,var(--surface)));display:flex;align-items:center;justify-content:center;padding:10px;text-align:center}
+.cover-art img{width:100%;height:100%;object-fit:cover;display:block;border-radius:2px}
+.cover-art .ph{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--gold)}
+.cover-card .c-title{margin-top:10px;font-size:.92rem;color:var(--text)}
+.cover-card .c-year{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim)}
+.cover-card.soon .cover-art{border:1px dashed var(--rose)}
+.cover-card.soon .ph{color:var(--rose)}
 
 .contact{text-align:center}
 .contact h2{margin-bottom:14px}
@@ -108,15 +118,15 @@ footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spa
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
 
-/* admin editor */
 #editOverlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
 .admin-card{background:var(--surface);border:1px solid var(--gold);border-radius:10px;max-width:640px;width:100%;padding:30px;box-shadow:var(--shadow);position:relative}
 .admin-in{background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);padding:12px 14px;font-family:'Figtree',sans-serif;font-size:.95rem;width:100%}
 #closeEdit{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.1rem}
 
 @media(max-width:820px){
-  .about-grid{grid-template-columns:1fr}
+  .about-grid,.album-feature{grid-template-columns:1fr}
   .portrait{position:static;max-width:380px}
+  .cover-lg{max-width:340px}
   .nav-links a:not(:last-child){display:none}
 }
 </style>
@@ -159,7 +169,7 @@ footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spa
     <div class="bio">
       <h2>Music as a <em>time machine</em>.</h2>
       <div id="bioText">
-        <p>Aura Vibin makes music the way some people keep a journal — except this one has bass in it. Montréal-based, raised on Missy Elliott and Beyoncé, she writes hip-hop/R&B that drifts between technical wordplay and atmospheric melody, with amapiano rhythms sneaking in underneath.</p>
+        <p>Aura Vibin makes music the way some people keep a journal — except this one has bass in it. Montréal-based, she writes hip-hop/R&B built on deep, body-feeling 808s, sharp wordplay, and atmosphere you can sink into.</p>
         <p>Sometimes it's shadow work. Sometimes it's just play. Mostly it's both at once — connecting dots, clearing her head, finding the exact words for feelings that usually go unnamed, and having a good time doing it.</p>
         <p>Her first album, <em>On a Cloud</em>, came out under the name Aura. <em>Exposé</em> is next. It's the vibrations, baby.</p>
       </div>
@@ -169,55 +179,64 @@ footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spa
 
 <section id="sound" class="reveal">
   <p class="sec-label">The Sound</p>
-  <h2>Hip-hop / R&B with <em>atmosphere</em>.</h2>
-  <p style="color:var(--text-dim);max-width:60ch">Technical bars over atmospheric melodies. Harmonies that feel like messages coming through. Amapiano rhythm underneath it all.</p>
+  <h2>808s, wordplay, <em>atmosphere</em>.</h2>
+  <p style="color:var(--text-dim);max-width:60ch">Technical bars over atmospheric melodies. Deep, body-feeling low end. Harmonies that feel like messages coming through.</p>
   <div class="sound-tags">
-    <span class="tag">Hip-Hop</span><span class="tag">R&B</span><span class="tag">Atmospheric</span>
-    <span class="tag">Amapiano</span><span class="tag">Wordplay</span><span class="tag">Vibrations</span>
+    <span class="tag">Hip-Hop</span><span class="tag">R&B</span><span class="tag">808s</span>
+    <span class="tag">Wordplay</span><span class="tag">Atmospheric</span><span class="tag">Vibrations</span>
   </div>
-  <p class="lineage">Lineage &nbsp;<span>·</span>&nbsp; Beyoncé &nbsp;<span>·</span>&nbsp; Doja Cat &nbsp;<span>·</span>&nbsp; Nicki Minaj &nbsp;<span>·</span>&nbsp; Eminem &nbsp;<span>·</span>&nbsp; Logic &nbsp;<span>·</span>&nbsp; J. Cole &nbsp;<span>·</span>&nbsp; Kanye &nbsp;<span>·</span>&nbsp; Lady Gaga &nbsp;<span>·</span>&nbsp; Cardi B &nbsp;<span>·</span>&nbsp; Drake &nbsp;<span>·</span>&nbsp; Ariana Grande</p>
 </section>
 
 <section id="music" class="reveal">
   <p class="sec-label">Music · The Time Machine</p>
   <h2>Every era, <em>every version</em>.</h2>
-  <div class="eras">
 
-    <div class="era">
-      <p class="era-date">The First Era</p>
-      <h3>On a Cloud — the first album, as Aura</h3>
-      <p>Ten tracks. Where it all began.</p>
-      <div class="tracks">
-        <div class="track"><span class="no">i</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">ii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">iii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">iv</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">v</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">vi</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">vii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">viii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">ix</span><span class="name">Track Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">x</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+  <!-- ═══════════ ERA 1 : AURA ═══════════ -->
+  <div class="era-head">
+    <span class="era-line">where it started —</span>
+    <a href="https://open.spotify.com/artist/6UXeIf0DmbrG7misHw2K7z" target="_blank" rel="noopener">Aura on Spotify ↗</a>
+  </div>
+
+  <!-- On a Cloud : featured album -->
+  <div class="album-feature">
+    <a class="cover-lg" data-spotify="" data-title="On a Cloud" href="https://open.spotify.com/artist/6UXeIf0DmbrG7misHw2K7z" target="_blank" rel="noopener"></a>
+    <div class="album-meta">
+      <p class="a-type">Album · 2019</p>
+      <h3>On a Cloud</h3>
+      <div class="tracklist" id="oacTracks">
+        <a href="#" target="_blank" rel="noopener"><span class="no">i</span>Written</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">ii</span>Wonderland</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">iii</span>Wicked Enemy</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">iv</span>Runaway</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">v</span>Wrinkle in Time</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">vi</span>Wishlist</a>
+        <a href="#" target="_blank" rel="noopener"><span class="no">vii</span>On a Cloud</a>
       </div>
     </div>
+  </div>
 
-    <div class="era">
-      <p class="era-date">The Continuation</p>
-      <h3>Two singles, as Aura Vibin</h3>
-      <p>Same artist, same frequency — new name, easier to find.</p>
-      <div class="tracks">
-        <div class="track"><span class="no">i</span><span class="name">Single Title</span><a href="#">Listen</a></div>
-        <div class="track"><span class="no">ii</span><span class="name">Single Title</span><a href="#">Listen</a></div>
-      </div>
-    </div>
+  <!-- Aura singles -->
+  <div class="cover-grid">
+    <a class="cover-card" data-spotify="" data-title="Beautiful Day" data-year="2019 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Thinkin' 'Bout" data-year="2019 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Snakebite" data-year="2019 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Solo" data-year="2020 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Secret Love" data-year="2020 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Phases" data-year="2022 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Laid-Back" data-year="2022 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Pleasure" data-year="2022 · Single" href="#" target="_blank" rel="noopener"></a>
+  </div>
 
-    <div class="era now">
-      <p class="era-date">Now in Progress</p>
-      <h3><em class="serif">Exposé</em> — the album</h3>
-      <p>A six-movement arc from shadow to clarity.</p>
-      <span class="coming">Coming Soon</span>
-    </div>
+  <!-- ═══════════ ERA 2 : AURA VIBIN ═══════════ -->
+  <div class="era-head">
+    <span class="era-line">where it evolved —</span>
+    <a href="https://open.spotify.com/artist/4ldhLuPpzSZZ2n7z9P5ACH" target="_blank" rel="noopener">Aura Vibin on Spotify ↗</a>
+  </div>
 
+  <div class="cover-grid">
+    <a class="cover-card" data-spotify="" data-title="Break the Silence" data-year="2024 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card" data-spotify="" data-title="Mirror Mirror" data-year="2025 · Single" href="#" target="_blank" rel="noopener"></a>
+    <a class="cover-card soon" data-title="Exposé" data-year="Coming Soon · Album" href="#"></a>
   </div>
 </section>
 
@@ -229,7 +248,7 @@ footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spa
   <div class="socials" style="margin-top:44px">
     <a href="https://www.tiktok.com/@auravibin" target="_blank" rel="noopener">TikTok</a>
     <a href="#" target="_blank" rel="noopener">Instagram</a>
-    <a href="#" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://open.spotify.com/artist/4ldhLuPpzSZZ2n7z9P5ACH" target="_blank" rel="noopener">Spotify</a>
     <a href="#" target="_blank" rel="noopener">Apple Music</a>
     <a href="#" target="_blank" rel="noopener">YouTube</a>
     <a href="https://www.threads.net/@auravibin" target="_blank" rel="noopener">Threads</a>
@@ -278,6 +297,40 @@ footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spa
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+// ---------- discography: auto-fetch cover art from Spotify links ----------
+const AURA_PAGE='https://open.spotify.com/artist/6UXeIf0DmbrG7misHw2K7z';
+const VIBIN_PAGE='https://open.spotify.com/artist/4ldhLuPpzSZZ2n7z9P5ACH';
+
+document.querySelectorAll('.cover-card').forEach(card=>{
+  const title=card.dataset.title, year=card.dataset.year||'', link=card.dataset.spotify;
+  const isVibin=['Break the Silence','Mirror Mirror','Exposé'].includes(title);
+  card.innerHTML='<div class="cover-art"><span class="ph">'+title+'</span></div>'+
+                 '<div class="c-title">'+title+'</div><div class="c-year">'+year+'</div>';
+  if(card.classList.contains('soon')){card.removeAttribute('href');return}
+  card.href = link || (isVibin?VIBIN_PAGE:AURA_PAGE);
+  if(link) loadCover(link, card.querySelector('.cover-art'), title);
+});
+
+// featured album cover
+const albumEl=document.querySelector('.cover-lg');
+const albumLink=albumEl.dataset.spotify;
+albumEl.innerHTML='<div class="cover-art" style="height:100%"><span class="ph">On a Cloud</span></div>';
+if(albumLink){
+  albumEl.href=albumLink;
+  loadCover(albumLink, albumEl.querySelector('.cover-art'), 'On a Cloud');
+  document.querySelectorAll('#oacTracks a').forEach(a=>{if(a.getAttribute('href')==='#')a.href=albumLink});
+}else{
+  document.querySelectorAll('#oacTracks a').forEach(a=>{if(a.getAttribute('href')==='#')a.href=AURA_PAGE});
+}
+
+async function loadCover(spotifyUrl, artEl, alt){
+  try{
+    const r=await fetch('https://open.spotify.com/oembed?url='+encodeURIComponent(spotifyUrl));
+    const d=await r.json();
+    if(d.thumbnail_url){artEl.style.padding='0';artEl.innerHTML='<img src="'+d.thumbnail_url+'" alt="'+alt+' — cover art" loading="lazy">'}
+  }catch(e){/* keep pretty placeholder */}
+}
+
 // ---------- supabase + editable bio ----------
 const sb = supabase.createClient(
   'https://ifzzkrbizxwzwhkquuob.supabase.co',
@@ -295,7 +348,6 @@ function renderBio(text){
   bioEl.innerHTML = text.split(/\n\s*\n/).map(p => '<p>' + p.trim() + '</p>').join('');
 }
 
-// tap wordmark 5x to open editor
 let taps = 0, tapTimer;
 document.getElementById('wordmark').addEventListener('click', () => {
   clearTimeout(tapTimer);
