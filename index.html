@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Vibin — Music</title>
+<meta name="description" content="Aura Vibin. Hip-hop / R&B from Montréal. Part shadow work, part play, all vibrations.">
+<meta property="og:title" content="Aura Vibin — Music">
+<meta property="og:image" content="https://music.auravibin.com/cute.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0908; --surface:#14110e; --line:rgba(201,162,75,.22);
+  --gold:#c9a24b; --gold-bright:#e0bd72; --rose:#d8a7b1; --rose-deep:#c48e9a;
+  --text:#ede7df; --text-dim:#a89f93;
+  --shadow:0 30px 80px rgba(0,0,0,.55);
+}
+[data-theme="light"]{
+  --bg:#f8f0ea; --surface:#fdf8f4; --line:rgba(168,128,47,.25);
+  --gold:#a8802f; --gold-bright:#8d6a24; --rose:#b0716f; --rose-deep:#9c5f60;
+  --text:#241c16; --text-dim:#6e6259;
+  --shadow:0 30px 80px rgba(120,90,60,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Figtree',sans-serif;font-weight:300;line-height:1.7;letter-spacing:.01em;transition:background .5s,color .5s}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--rose);color:#0a0908}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,5vw,56px);backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.wordmark{font-family:'Cormorant Garamond',serif;font-size:1.25rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);cursor:pointer}
+.nav-links{display:flex;gap:clamp(14px,3vw,34px);align-items:center;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim)}
+.nav-links a:hover{color:var(--rose)}
+#modeBtn{background:none;border:1px solid var(--line);color:var(--gold);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:.95rem;transition:transform .4s}
+#modeBtn:hover{transform:rotate(40deg)}
+#modeBtn:focus-visible,.btn:focus-visible,a:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse 60% 45% at 50% 42%,color-mix(in srgb,var(--gold) 12%,transparent),transparent 70%);pointer-events:none}
+.eyebrow{font-size:.75rem;letter-spacing:.42em;text-transform:uppercase;color:var(--rose);margin-bottom:26px}
+.hero h1{font-size:clamp(3.2rem,10vw,7.5rem);line-height:.95;letter-spacing:.05em;text-transform:uppercase}
+.hero h1 em{font-style:italic;color:var(--gold);letter-spacing:.02em;text-transform:none}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.6vw,1.6rem);color:var(--text-dim);margin-top:26px;max-width:34ch}
+.tagline b{color:var(--rose);font-weight:500}
+
+.wave{display:flex;gap:6px;align-items:flex-end;height:54px;margin-top:44px}
+.wave span{width:3px;background:linear-gradient(to top,var(--gold),var(--gold-bright));border-radius:3px;animation:breathe 3.6s ease-in-out infinite}
+@keyframes breathe{0%,100%{height:22%;opacity:.45}50%{height:var(--h);opacity:1}}
+@media (prefers-reduced-motion:reduce){.wave span{animation:none;height:var(--h)}.reveal{opacity:1!important;transform:none!important}}
+
+.cta-row{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;justify-content:center}
+.btn{padding:14px 32px;border-radius:100px;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;border:1px solid var(--gold);transition:.3s;display:inline-block}
+.btn.gold{background:var(--gold);color:var(--bg)}
+.btn.gold:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+.btn.ghost{color:var(--gold)}
+.btn.ghost:hover{background:color-mix(in srgb,var(--gold) 14%,transparent)}
+
+section{padding:clamp(80px,12vh,140px) clamp(20px,6vw,80px);max-width:1080px;margin:0 auto}
+.sec-label{font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:18px;margin-bottom:38px}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+h2{font-size:clamp(2rem,4.5vw,3.1rem);line-height:1.15;margin-bottom:28px}
+h2 em{color:var(--rose);font-style:italic}
+
+.about-grid{display:grid;grid-template-columns:340px 1fr;gap:clamp(30px,5vw,70px);align-items:start}
+.portrait{aspect-ratio:4/5;border-radius:6px;border:1px solid var(--line);background:linear-gradient(160deg,var(--surface),color-mix(in srgb,var(--gold) 8%,var(--surface)));display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:var(--shadow);position:sticky;top:110px}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.bio p{color:var(--text-dim);margin-bottom:1.3em;font-size:1.02rem}
+.bio p strong{color:var(--text);font-weight:500}
+.bio p em{color:var(--rose)}
+
+.sound-tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.tag{border:1px solid var(--line);border-radius:100px;padding:9px 22px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);transition:.3s}
+.tag:hover{border-color:var(--rose);color:var(--rose)}
+.lineage{margin-top:44px;color:var(--text-dim);font-size:.95rem}
+.lineage span{color:var(--gold)}
+
+.eras{position:relative;margin-top:20px}
+.eras::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--line),var(--gold),var(--line))}
+.era{position:relative;padding:0 0 70px 58px}
+.era:last-child{padding-bottom:0}
+.era::before{content:"";position:absolute;left:5px;top:10px;width:13px;height:13px;border-radius:50%;border:1px solid var(--gold);background:var(--bg)}
+.era.now::before{background:var(--gold);box-shadow:0 0 18px color-mix(in srgb,var(--gold) 60%,transparent)}
+.era-date{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--rose)}
+.era h3{font-size:1.9rem;margin:8px 0 10px}
+.era p{color:var(--text-dim);max-width:56ch;font-size:.98rem}
+.tracks{margin-top:22px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.track{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line);font-size:.92rem;transition:.25s}
+.track:last-child{border-bottom:none}
+.track:hover{background:color-mix(in srgb,var(--gold) 7%,var(--surface));padding-left:28px}
+.track .no{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;width:34px}
+.track .name{flex:1}
+.track a{color:var(--rose);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.coming{display:inline-block;margin-top:18px;border:1px solid var(--rose);color:var(--rose);border-radius:100px;padding:8px 22px;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase}
+
+.contact{text-align:center}
+.contact h2{margin-bottom:14px}
+.contact p{color:var(--text-dim);max-width:46ch;margin:0 auto 36px}
+.socials{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase}
+.socials a{color:var(--gold);border-bottom:1px solid transparent;padding-bottom:4px;transition:.3s}
+.socials a:hover{color:var(--rose);border-color:var(--rose)}
+
+footer{text-align:center;padding:46px 20px;border-top:1px solid var(--line);color:var(--text-dim);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase}
+footer .serif{color:var(--gold);font-style:italic;text-transform:none;letter-spacing:.04em;font-size:1rem;display:block;margin-bottom:10px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* admin editor */
+#editOverlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.admin-card{background:var(--surface);border:1px solid var(--gold);border-radius:10px;max-width:640px;width:100%;padding:30px;box-shadow:var(--shadow);position:relative}
+.admin-in{background:var(--bg);border:1px solid var(--line);border-radius:6px;color:var(--text);padding:12px 14px;font-family:'Figtree',sans-serif;font-size:.95rem;width:100%}
+#closeEdit{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.1rem}
+
+@media(max-width:820px){
+  .about-grid{grid-template-columns:1fr}
+  .portrait{position:static;max-width:380px}
+  .nav-links a:not(:last-child){display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="wordmark" id="wordmark">Aura Vibin</span>
+  <div class="nav-links">
+    <a href="#about">Biography</a>
+    <a href="#sound">The Sound</a>
+    <a href="#music">Music</a>
+    <a href="#contact">Contact</a>
+    <button id="modeBtn" aria-label="Toggle light and dark mode">◐</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <p class="eyebrow">Montréal · Hip-Hop / R&B</p>
+  <h1>Aura <em>Vibin</em></h1>
+  <p class="tagline">Part shadow work, part play. <b>All vibrations.</b></p>
+  <div class="wave" aria-hidden="true">
+    <span style="--h:40%;animation-delay:0s"></span><span style="--h:85%;animation-delay:.2s"></span>
+    <span style="--h:55%;animation-delay:.4s"></span><span style="--h:100%;animation-delay:.1s"></span>
+    <span style="--h:65%;animation-delay:.5s"></span><span style="--h:90%;animation-delay:.3s"></span>
+    <span style="--h:45%;animation-delay:.6s"></span><span style="--h:75%;animation-delay:.15s"></span>
+    <span style="--h:100%;animation-delay:.45s"></span><span style="--h:60%;animation-delay:.25s"></span>
+    <span style="--h:82%;animation-delay:.55s"></span><span style="--h:38%;animation-delay:.35s"></span>
+  </div>
+  <div class="cta-row">
+    <a class="btn gold" href="#music">Listen</a>
+    <a class="btn ghost" href="#about">The Story</a>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <p class="sec-label">Biography</p>
+  <div class="about-grid">
+    <div class="portrait"><img src="cute.png" alt="Aura Vibin — portrait"></div>
+    <div class="bio">
+      <h2>Music as a <em>time machine</em>.</h2>
+      <div id="bioText">
+        <p>Aura Vibin makes music the way some people keep a journal — except this one has bass in it. Montréal-based, raised on Missy Elliott and Beyoncé, she writes hip-hop/R&B that drifts between technical wordplay and atmospheric melody, with amapiano rhythms sneaking in underneath.</p>
+        <p>Sometimes it's shadow work. Sometimes it's just play. Mostly it's both at once — connecting dots, clearing her head, finding the exact words for feelings that usually go unnamed, and having a good time doing it.</p>
+        <p>Her first album, <em>On a Cloud</em>, came out under the name Aura. <em>Exposé</em> is next. It's the vibrations, baby.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sound" class="reveal">
+  <p class="sec-label">The Sound</p>
+  <h2>Hip-hop / R&B with <em>atmosphere</em>.</h2>
+  <p style="color:var(--text-dim);max-width:60ch">Technical bars over atmospheric melodies. Harmonies that feel like messages coming through. Amapiano rhythm underneath it all.</p>
+  <div class="sound-tags">
+    <span class="tag">Hip-Hop</span><span class="tag">R&B</span><span class="tag">Atmospheric</span>
+    <span class="tag">Amapiano</span><span class="tag">Wordplay</span><span class="tag">Vibrations</span>
+  </div>
+  <p class="lineage">Lineage &nbsp;<span>·</span>&nbsp; Beyoncé &nbsp;<span>·</span>&nbsp; Doja Cat &nbsp;<span>·</span>&nbsp; Nicki Minaj &nbsp;<span>·</span>&nbsp; Eminem &nbsp;<span>·</span>&nbsp; Logic &nbsp;<span>·</span>&nbsp; J. Cole &nbsp;<span>·</span>&nbsp; Kanye &nbsp;<span>·</span>&nbsp; Lady Gaga &nbsp;<span>·</span>&nbsp; Cardi B &nbsp;<span>·</span>&nbsp; Drake &nbsp;<span>·</span>&nbsp; Ariana Grande</p>
+</section>
+
+<section id="music" class="reveal">
+  <p class="sec-label">Music · The Time Machine</p>
+  <h2>Every era, <em>every version</em>.</h2>
+  <div class="eras">
+
+    <div class="era">
+      <p class="era-date">The First Era</p>
+      <h3>On a Cloud — the first album, as Aura</h3>
+      <p>Ten tracks. Where it all began.</p>
+      <div class="tracks">
+        <div class="track"><span class="no">i</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">ii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">iii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">iv</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">v</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">vi</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">vii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">viii</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">ix</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">x</span><span class="name">Track Title</span><a href="#">Listen</a></div>
+      </div>
+    </div>
+
+    <div class="era">
+      <p class="era-date">The Continuation</p>
+      <h3>Two singles, as Aura Vibin</h3>
+      <p>Same artist, same frequency — new name, easier to find.</p>
+      <div class="tracks">
+        <div class="track"><span class="no">i</span><span class="name">Single Title</span><a href="#">Listen</a></div>
+        <div class="track"><span class="no">ii</span><span class="name">Single Title</span><a href="#">Listen</a></div>
+      </div>
+    </div>
+
+    <div class="era now">
+      <p class="era-date">Now in Progress</p>
+      <h3><em class="serif">Exposé</em> — the album</h3>
+      <p>A six-movement arc from shadow to clarity.</p>
+      <span class="coming">Coming Soon</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact reveal">
+  <p class="sec-label" style="justify-content:center">Contact</p>
+  <h2>Bookings · Press · <em>Collabs</em></h2>
+  <p>For inquiries, sync licensing, and everything in between.</p>
+  <a class="btn gold" href="mailto:auravibin@icloud.com">auravibin@icloud.com</a>
+  <div class="socials" style="margin-top:44px">
+    <a href="https://www.tiktok.com/@auravibin" target="_blank" rel="noopener">TikTok</a>
+    <a href="#" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" target="_blank" rel="noopener">Spotify</a>
+    <a href="#" target="_blank" rel="noopener">Apple Music</a>
+    <a href="#" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.threads.net/@auravibin" target="_blank" rel="noopener">Threads</a>
+  </div>
+</section>
+
+<footer>
+  <span class="serif">it's the vibrations, baby</span>
+  © 2026 Aura Vibin · Montréal, QC
+</footer>
+
+<!-- hidden bio editor -->
+<div id="editOverlay">
+  <div class="admin-card">
+    <button id="closeEdit" aria-label="Close">✕</button>
+    <p class="sec-label" style="margin-bottom:20px">Edit Bio</p>
+    <div id="loginBox">
+      <input id="adminEmail" type="email" placeholder="Email" class="admin-in" style="margin-bottom:10px">
+      <input id="adminPass" type="password" placeholder="Password" class="admin-in" style="margin-bottom:16px">
+      <button class="btn gold" id="loginBtn" style="cursor:pointer;border:none">Log in</button>
+    </div>
+    <div id="editorBox" style="display:none">
+      <textarea id="bioEdit" rows="12" class="admin-in" style="margin-bottom:16px;resize:vertical"></textarea>
+      <button class="btn gold" id="saveBtn" style="cursor:pointer;border:none">Save</button>
+      <span id="saveMsg" style="margin-left:14px;color:var(--rose);font-size:.8rem"></span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ---------- theme toggle ----------
+(function(){
+  const root=document.documentElement, btn=document.getElementById('modeBtn');
+  let saved=null; try{saved=localStorage.getItem('av-theme')}catch(e){}
+  if(saved){root.dataset.theme=saved}
+  else if(window.matchMedia('(prefers-color-scheme: light)').matches){root.dataset.theme='light'}
+  btn.addEventListener('click',()=>{
+    const next=root.dataset.theme==='dark'?'light':'dark';
+    root.dataset.theme=next;
+    try{localStorage.setItem('av-theme',next)}catch(e){}
+  });
+})();
+
+// ---------- scroll reveal ----------
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ---------- supabase + editable bio ----------
+const sb = supabase.createClient(
+  'https://ifzzkrbizxwzwhkquuob.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmenprcmJpenh3endoa3F1dW9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwOTc5NzgsImV4cCI6MjA5MDY3Mzk3OH0.lMKwzdnTAGzyIKxhmxV1ugejc70k78MkF7A_-m6VFpk'
+);
+const bioEl = document.getElementById('bioText');
+
+(async () => {
+  try{
+    const { data } = await sb.from('music_site').select('value').eq('key','bio').maybeSingle();
+    if (data && data.value) renderBio(data.value);
+  }catch(e){}
+})();
+function renderBio(text){
+  bioEl.innerHTML = text.split(/\n\s*\n/).map(p => '<p>' + p.trim() + '</p>').join('');
+}
+
+// tap wordmark 5x to open editor
+let taps = 0, tapTimer;
+document.getElementById('wordmark').addEventListener('click', () => {
+  clearTimeout(tapTimer);
+  taps++;
+  tapTimer = setTimeout(() => taps = 0, 2500);
+  if (taps >= 5) { taps = 0; openEditor(); }
+});
+
+const overlay = document.getElementById('editOverlay');
+async function openEditor(){
+  overlay.style.display = 'flex';
+  const { data:{ session } } = await sb.auth.getSession();
+  if (session) showEditor();
+}
+function showEditor(){
+  document.getElementById('loginBox').style.display = 'none';
+  document.getElementById('editorBox').style.display = 'block';
+  document.getElementById('bioEdit').value =
+    [...bioEl.querySelectorAll('p')].map(p => p.innerHTML.trim()).join('\n\n');
+}
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  const { error } = await sb.auth.signInWithPassword({
+    email: document.getElementById('adminEmail').value,
+    password: document.getElementById('adminPass').value
+  });
+  if (error) alert(error.message); else showEditor();
+});
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const text = document.getElementById('bioEdit').value;
+  const { error } = await sb.from('music_site').upsert({ key:'bio', value:text, updated_at:new Date().toISOString() });
+  const msg = document.getElementById('saveMsg');
+  if (error) { msg.textContent = 'Error: ' + error.message; }
+  else { msg.textContent = 'Saved ✓'; renderBio(text); setTimeout(()=>msg.textContent='',2500); }
+});
+document.getElementById('closeEdit').addEventListener('click', () => overlay.style.display = 'none');
+</script>
+</body>
+</html>
