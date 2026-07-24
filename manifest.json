@@ -1,0 +1,24 @@
+{
+  "name": "Aura Vibin — Music",
+  "short_name": "Aura Vibin",
+  "description": "Part shadow work, part play. All vibrations.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f1ec",
+  "theme_color": "#f8f1ec",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
